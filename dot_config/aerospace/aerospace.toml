@@ -48,7 +48,7 @@ automatically-unhide-macos-hidden-apps = false
 # even when they are invisible.
 # This config version is only available since 'config-version = 2'
 # Fallback value (if you omit the key): persistent-workspaces = []
-persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "Terminal", "Browser", "Notion", "Code", "IntelliJ", "KakaoTalk"]
+persistent-workspaces = ["Terminal", "Browser", "Notion", "Code", "IntelliJ", "KakaoTalk", "1", "2", "3", "4", "5", "6", "7", "8"]
 
 # A callback that runs every time binding mode changes
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -158,6 +158,12 @@ on-mode-changed = []
     # alt-shift-semicolon = 'mode service'
 
 [workspace-to-monitor-force-assignment]
+    IntelliJ = 1
+    Browser = 1
+    KakaoTalk = 1
+    Terminal = 2
+    Code = 2
+    Notion = 2
     1 = 1
     2 = 1
     3 = 1
@@ -166,12 +172,6 @@ on-mode-changed = []
     6 = 2
     7 = 2
     8 = 2
-    IntelliJ = 1
-    Browser = 1
-    KakaoTalk = 1
-    Terminal = 2
-    Code = 2
-    Notion = 2
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes

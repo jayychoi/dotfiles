@@ -1,4 +1,5 @@
 bindLayer(key["f19"], {
+	-- Focus to named space
 	[key["t"]] = function()
 		aerospace("workspace Terminal")
 	end,
@@ -22,6 +23,7 @@ bindLayer(key["f19"], {
 		hs.reload()
 	end,
 
+	-- Move to named space
 	shift = {
 		[key["t"]] = function()
 			aerospace("move-node-to-workspace Terminal")
@@ -42,4 +44,11 @@ bindLayer(key["f19"], {
 			aerospace("move-node-to-workspace KakaoTalk")
 		end,
 	},
+
+	-- Open music player
+	[key["m"]] = function()
+		hs.execute([[
+			/Applications/Ghostty.app/Contents/MacOS/ghostty -e /usr/bin/env zsh -l -c '/opt/homebrew/bin/tmux -L Music new-session -A -s Music musikcube'
+		]])
+	end,
 })
