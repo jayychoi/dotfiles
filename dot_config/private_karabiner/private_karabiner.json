@@ -1,0 +1,100 @@
+{
+    "profiles": [
+        {
+            "complex_modifications": {
+                "parameters": {
+                    "basic.to_delayed_action_delay_milliseconds": 50,
+                    "basic.to_if_alone_timeout_milliseconds": 500
+                },
+                "rules": [
+                    {
+                        "description": "Tap-hold: caps_lock(esc/ctrl), tab(f17), right_shift(f19), right_option(f20)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "left_control" }],
+                                "to_if_alone": [
+                                    { "key_code": "escape" },
+                                    { "select_input_source": { "language": "en" } }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": { "key_code": "tab" },
+                                "to": [{ "key_code": "f17" }],
+                                "to_if_alone": [{ "key_code": "tab" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": { "key_code": "right_shift" },
+                                "to": [{ "key_code": "f19" }],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "right_arrow",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": { "key_code": "right_option" },
+                                "to": [{ "key_code": "f20" }],
+                                "to_if_alone": [{ "key_code": "right_option" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "esc를 누를 때 입력 언어도 영어로 전환",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "escape" },
+                                "to": [
+                                    { "key_code": "escape" },
+                                    { "select_input_source": { "language": "en" } }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "한글 입력에서 원화 기호를 백틱으로 변경",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "input_sources": [{ "language": "ko" }],
+                                        "type": "input_source_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "grave_accent_and_tilde",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "grave_accent_and_tilde",
+                                        "modifiers": ["option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "name": "Default profile",
+            "selected": true,
+            "simple_modifications": [
+                {
+                    "from": { "key_code": "right_command" },
+                    "to": [{ "key_code": "f18" }]
+                }
+            ],
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+        }
+    ]
+}

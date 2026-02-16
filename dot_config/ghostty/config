@@ -1,0 +1,16 @@
+# Theme
+theme = Catppuccin Mocha
+
+# Font
+font-family = JetBrainsMonoNL Nerd Font Mono
+font-family = D2Coding
+font-size = 14
+
+# Window
+macos-option-as-alt = true
+macos-titlebar-style = hidden
+window-padding-x = 4
+window-padding-y = 4
+
+# Keyboard
+keybind = shift+enter=text:\n
