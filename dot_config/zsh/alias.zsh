@@ -1,3 +1,6 @@
+# reload zsh
+alias ez="exec zsh"
+
 # nvim
 alias v="nvim"
 alias sv="sudo nvim"
@@ -15,6 +18,9 @@ alias lg="lazygit"
 
 # musikcube
 alias mc="musikcube"
+
+# claude code
+alias c="claude"
 
 # GNU gcc
 alias gcc="/opt/homebrew/bin/gcc-14"
@@ -79,6 +85,7 @@ alias grb="git rebase"
 alias gbd="git branch -d"
 
 alias jay-deb="ssh -p 10954 jay@172.30.1.87"
+alias jay-sub="ssh -p 38404 jay@172.30.1.96"
 
 # ghostty
 alias ghostty="/Applications/Ghostty.app/Contents/MacOS/ghostty"

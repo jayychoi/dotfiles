@@ -1,0 +1,361 @@
+set scrolloff=8
+set number
+set relativenumber
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
+set showcmd
+set showmode
+set clipboard=unnamedplus
+
+set surround      " ys, cs, ds
+set commentary    " gc
+set argtextobj
+set textobj-entire
+set ReplaceWithRegister
+set highlightedyank
+set nerdtree
+set easymotion
+map <leader>j <Plug>(easymotion-s)
+set which-key
+set notimeout
+"set sneak
+
+" ============================================================
+"  vim config
+" ============================================================
+let mapleader = " "
+nnoremap <leader>ve :e ~/.ideavimrc<CR>
+nnoremap <leader>vr :source ~/.ideavimrc<CR>
+
+" ============================================================
+"  move
+" ============================================================
+" move tab
+nmap H <Action>(PreviousTab)
+nmap L <Action>(NextTab)
+" move pane
+nmap <C-H> <Action>(PrevSplitter)
+nmap <C-L> <Action>(NextSplitter)
+" move line
+imap <M-k> <Action>(MoveLineUp)
+imap <M-j> <Action>(MoveLineDown)
+nmap <C-k> <Action>(MoveLineUp)
+nmap <C-j> <Action>(MoveLineDown)
+" move statement
+imap <M-C-k> <Action>(MoveStatementUp)
+imap <M-C-j> <Action>(MoveStatementDown)
+nmap <C-S-k> <Action>(MoveStatementUp)
+nmap <C-S-j> <Action>(MoveStatementDown)
+" move element
+map <M-h> <Action>(MoveElementLeft)
+map <M-l> <Action>(MoveElementRight)
+" move cursor in insert mode
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+inoremap <C-p> <Up>
+inoremap <C-n> <Down>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+" move cursor history
+nmap <C-[> <action>(Back)
+nmap <C-]> <action>(Forward)
+" move cursor home/end
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+
+" ============================================================
+"  improvements
+" ============================================================
+" C-s로 저장
+inoremap <C-s> <Esc>:w<CR>
+nnoremap <C-s> :w<CR>
+" / 검색 시 화면 중앙으로 커서 이동
+nnoremap n nzzzv
+nnoremap N Nzzzv
+" * 검색 후에도 중앙 정렬
+nnoremap * *zz
+nnoremap # #zz
+" 앞 단어 삭제
+inoremap <C-BS> <C-w>
+inoremap <C-w> <C-w>
+" 한 글자 삭제 — Del
+inoremap <C-d> <Delete>
+" 커서 앞 줄 전체 삭제
+inoremap <C-u> <C-u>
+" Normal 모드 명령 1회 실행 후 Insert 복귀
+inoremap <C-o> <C-o>
+" 레지스터 내용 붙여넣기
+inoremap <C-r> <C-r>
+" 들여쓰기 유지
+vnoremap < <gv
+vnoremap > >gv
+
+" ============================================================
+"  which-key groups
+" ============================================================
+let g:WhichKeyDesc_leader        = "<leader> Leader"
+let g:WhichKeyDesc_find          = "<leader>f +Find"
+let g:WhichKeyDesc_goto          = "<leader>g +Git"
+let g:WhichKeyDesc_buffer        = "<leader>b +Buffer"
+let g:WhichKeyDesc_code          = "<leader>c +Code"
+let g:WhichKeyDesc_refactor      = "<leader>r +Refactor"
+let g:WhichKeyDesc_run           = "<leader>R +Run"
+let g:WhichKeyDesc_test          = "<leader>t +Test"
+let g:WhichKeyDesc_new           = "<leader>n +New"
+let g:WhichKeyDesc_window        = "<leader>w +Window"
+let g:WhichKeyDesc_toggle        = "<leader>T +Toggle"
+let g:WhichKeyDesc_error         = "<leader>x +Diagnostics"
+let g:WhichKeyDesc_vim           = "<Leader>v +Vim"
+let g:WhichKeyDesc_g             = "g Go to"
+let g:WhichKeyDesc_z             = "z Z motions"
+let g:WhichKeyDesc_open_bracket  = "[ Open bracket commands"
+let g:WhichKeyDesc_close_bracket = "] Close bracket commands"
+
+" ============================================================
+"  leader
+" ============================================================
+nnoremap <leader>e :NERDTreeToggle<CR>
+
+" ============================================================
+"  refactor
+" ============================================================
+nmap <leader>rn <action>(RenameElement)
+nmap <leader>rm <action>(ExtractMethod)
+nmap <leader>rv <action>(IntroduceVariable)
+nmap <leader>rf <action>(IntroduceField)
+nmap <leader>rc <action>(IntroduceConstant)
+nmap <leader>ri <action>(Inline)
+nmap <leader>rr <action>(Refactorings.QuickListPopupAction)
+
+let g:WhichKeyDesc_refactor_rename   = "<leader>rn Rename"
+let g:WhichKeyDesc_refactor_method   = "<leader>rm Extract Method"
+let g:WhichKeyDesc_refactor_var      = "<leader>rv Extract Variable"
+let g:WhichKeyDesc_refactor_field    = "<leader>rf Extract Field"
+let g:WhichKeyDesc_refactor_constant = "<leader>rc Extract Constant"
+let g:WhichKeyDesc_refactor_inline   = "<leader>ri Inline"
+let g:WhichKeyDesc_refactor_all      = "<leader>rr All Refactors"
+
+" ============================================================
+"  code
+" ============================================================
+nmap <leader>ca <Action>(ShowIntentionActions)
+nmap <leader>cf <Action>(ReformatCode)
+nmap <leader>ci <Action>(OptimizeImports)
+
+let g:WhichKeyDesc_code_Action   = "<leader>ca Action"
+let g:WhichKeyDesc_code_format   = "<leader>cf Format"
+let g:WhichKeyDesc_code_import   = "<leader>ci Imports"
+
+" ============================================================
+"  new
+" ============================================================
+nmap <leader>nf <Action>(NewFile)
+nmap <leader>nj <Action>(NewClass)
+nmap <leader>nk <Action>(Kotlin.NewFile)
+nmap <leader>nd <Action>(NewDir)
+
+let g:WhichKeyDesc_new_file   = "<leader>nf New File"
+let g:WhichKeyDesc_new_class  = "<leader>nj New Java Class"
+let g:WhichKeyDesc_new_kotlin = "<leader>nk New Kotlin Class/File"
+let g:WhichKeyDesc_new_dir    = "<leader>nd New Directory"
+
+" ============================================================
+"  git
+" ============================================================
+nmap <leader>gb <Action>(GitToolBox.BlameDetails)
+
+" ============================================================
+"  g: Go to
+" ============================================================
+nmap gu <Action>(FindUsages)
+nmap gi <Action>(GotoImplementation)
+nmap gd <Action>(GotoDeclaration)
+nmap gD <Action>(GotoTypeDeclaration)
+nmap gs <Action>(GotoSuperMethod)
+nmap gt <Action>(GotoTest)
+
+let g:WhichKeyDesc_g_u        = "gu Find Usages"
+let g:WhichKeyDesc_g_i        = "gi Go to Implementation"
+let g:WhichKeyDesc_g_d        = "gd Go to Declaration"
+let g:WhichKeyDesc_g_D        = "gD Go to Type Declaration"
+let g:WhichKeyDesc_g_s        = "gs Go to Super Method"
+let g:WhichKeyDesc_g_t        = "gt Go to Test"
+let g:WhichKeyDesc_g_hash     = "g# 커서 단어 역방향 검색 (부분 일치)"
+let g:WhichKeyDesc_g_star     = "g* 커서 단어 정방향 검색 (부분 일치)"
+let g:WhichKeyDesc_g_backtick = "g` 마크로 이동 (정확한 위치, 점프목록 미저장)"
+let g:WhichKeyDesc_g_r        = "gr 레지스터 내용으로 교체"
+let g:WhichKeyDesc_g_quote    = "g' 마크로 이동 (줄 단위, 점프목록 미저장)"
+let g:WhichKeyDesc_g_c        = "gc Toggle Comment"
+let g:WhichKeyDesc_g_g        = "gg Go to First Line"
+
+" ============================================================
+"  z motions
+" ============================================================
+nnoremap zl zL
+nnoremap zh zH
+nnoremap zL zl
+nnoremap zH zh
+
+let g:WhichKeyDesc_z_t = "zt 현재 줄 → 화면 상단"
+let g:WhichKeyDesc_z_z = "zz 현재 줄 → 화면 중앙"
+let g:WhichKeyDesc_z_b = "zb 현재 줄 → 화면 하단"
+" 스크롤 — 수평 (대소문자 스왑)
+let g:WhichKeyDesc_z_H = "zH 한 칸 오른쪽 스크롤"
+let g:WhichKeyDesc_z_L = "zL 한 칸 왼쪽 스크롤"
+let g:WhichKeyDesc_z_h = "zh 절반 오른쪽 스크롤"
+let g:WhichKeyDesc_z_l = "zl 절반 왼쪽 스크롤"
+" 폴딩 — 열기 / 닫기 / 토글
+let g:WhichKeyDesc_z_o = "zo 폴드 열기"
+let g:WhichKeyDesc_z_O = "zO 폴드 재귀적으로 열기"
+let g:WhichKeyDesc_z_c = "zc 폴드 닫기"
+let g:WhichKeyDesc_z_C = "zC 폴드 재귀적으로 닫기"
+let g:WhichKeyDesc_z_a = "za 폴드 토글"
+let g:WhichKeyDesc_z_A = "zA 폴드 재귀적 토글"
+" 폴드 이동
+let g:WhichKeyDesc_z_j = "zj 다음 폴드로 이동"
+let g:WhichKeyDesc_z_k = "zk 이전 폴드로 이동"
+
+" ============================================================
+"  bracket commands
+" ============================================================
+nmap [e <Action>(GotoPreviousError)
+nmap ]e <Action>(GotoNextError)
+let g:WhichKeyDesc_bracket_prev_paren        = "[(  이전 매칭 안 된 ("
+let g:WhichKeyDesc_bracket_prev_sec_start    = "[[  이전 섹션 시작"
+let g:WhichKeyDesc_bracket_prev_sec_end      = "[]  이전 섹션 끝"
+let g:WhichKeyDesc_bracket_prev_method_start = "[m  이전 메서드 시작"
+let g:WhichKeyDesc_bracket_prev_method_end   = "[M  이전 메서드 끝"
+let g:WhichKeyDesc_bracket_prev_camel        = "[b  이전 camelCase 단어"
+let g:WhichKeyDesc_bracket_next_camel        = "[w  다음 camelCase 단어"
+let g:WhichKeyDesc_bracket_prev_brace        = "[{  이전 매칭 안 된 {"
+let g:WhichKeyDesc_bracket_prev_mark         = "[\` 이전 mark"
+let g:WhichKeyDesc_bracket_prev_spell        = "[s  이전 맞춤법 오류 단어"
+let g:WhichKeyDesc_bracket_put_before        = "[p  들여쓰기 없이 앞에 붙여넣기"
+let g:WhichKeyDesc_bracket_put_before2       = "[P  들여쓰기 없이 앞에 붙여넣기"
+let g:WhichKeyDesc_bracket_prev_error        = "[e  이전 에러"
+let g:WhichKeyDesc_bracket_next_paren        = "])  다음 매칭 안 된 )"
+let g:WhichKeyDesc_bracket_next_sec_end      = "][  다음 섹션 끝"
+let g:WhichKeyDesc_bracket_next_sec_start    = "]]  다음 섹션 시작"
+let g:WhichKeyDesc_bracket_next_method_start = "]m  다음 메서드 시작"
+let g:WhichKeyDesc_bracket_next_method_end   = "]M  다음 메서드 끝"
+let g:WhichKeyDesc_bracket_next_camel_left   = "]b  이전 camelCase 단어 끝"
+let g:WhichKeyDesc_bracket_next_camel_right  = "]w  다음 camelCase 단어 끝"
+let g:WhichKeyDesc_bracket_next_brace        = "]}  다음 매칭 안 된 }"
+let g:WhichKeyDesc_bracket_next_mark         = "]\` 다음 mark"
+let g:WhichKeyDesc_bracket_next_spell        = "]s  다음 맞춤법 오류 단어"
+let g:WhichKeyDesc_bracket_put_after         = "]p  들여쓰기 없이 뒤에 붙여넣기"
+let g:WhichKeyDesc_bracket_put_before        = "]P  들여쓰기 없이 앞에 붙여넣기"
+let g:WhichKeyDesc_bracket_next_error        = "]e  다음 에러"
+
+" ============================================================
+"  disabled prefix: g, z
+" ============================================================
+nnoremap g$     <Nop>
+nnoremap g&     <Nop>
+nnoremap g(     <Nop>
+nnoremap g)     <Nop>
+nnoremap g0     <Nop>
+nnoremap g8     <Nop>
+nnoremap g?     <Nop>
+nnoremap g@     <Nop>
+nnoremap g<C-G> <Nop>
+nnoremap g<C-H> <Nop>
+nnoremap g<Down> <Nop>
+nnoremap g<End>  <Nop>
+nnoremap g<Home> <Nop>
+nnoremap g<Up>   <Nop>
+nnoremap g^     <Nop>
+nnoremap g_     <Nop>
+nnoremap ga     <Nop>
+nnoremap gE     <Nop>
+nnoremap ge     <Nop>
+nnoremap gH     <Nop>
+nnoremap gh     <Nop>
+nnoremap gI     <Nop>
+nnoremap gJ     <Nop>
+nnoremap gk     <Nop>
+nnoremap gj     <Nop>
+nnoremap gm     <Nop>
+nnoremap gN     <Nop>
+nnoremap gn     <Nop>
+nnoremap go     <Nop>
+nnoremap gP     <Nop>
+nnoremap gp     <Nop>
+nnoremap gq     <Nop>
+nnoremap gT     <Nop>
+nnoremap gU     <Nop>
+nnoremap g~     <Nop>
+
+nnoremap z<CR> <Nop>
+nnoremap z<Left> <Nop>
+nnoremap z<Right> <Nop>
+nnoremap z+ <Nop>
+nnoremap z^ <Nop>
+nnoremap z. <Nop>
+nnoremap z- <Nop>
+nnoremap zr <Nop>
+nnoremap zm <Nop>
+nnoremap zf <Nop>
+nnoremap zd <Nop>
+nnoremap zD <Nop>
+nnoremap ze <Nop>
+nnoremap zs <Nop>
+nnoremap zR <Nop>
+nnoremap zM <Nop>
+
+let g:WhichKeyDesc_g_dollar   = "g$"
+let g:WhichKeyDesc_g_amp      = "g&"
+let g:WhichKeyDesc_g_lparen   = "g("
+let g:WhichKeyDesc_g_rparen   = "g)"
+let g:WhichKeyDesc_g_0        = "g0"
+let g:WhichKeyDesc_g_8        = "g8"
+let g:WhichKeyDesc_g_question = "g?"
+let g:WhichKeyDesc_g_at       = "g@"
+let g:WhichKeyDesc_g_ctrl_g   = "g<C-G>"
+let g:WhichKeyDesc_g_ctrl_h   = "g<C-H>"
+let g:WhichKeyDesc_g_down     = "g<Down>"
+let g:WhichKeyDesc_g_end      = "g<End>"
+let g:WhichKeyDesc_g_home     = "g<Home>"
+let g:WhichKeyDesc_g_up       = "g<Up>"
+let g:WhichKeyDesc_g_caret    = "g^"
+let g:WhichKeyDesc_g_under    = "g_"
+let g:WhichKeyDesc_g_a        = "ga"
+let g:WhichKeyDesc_g_E        = "gE"
+let g:WhichKeyDesc_g_e        = "ge"
+let g:WhichKeyDesc_g_H        = "gH"
+let g:WhichKeyDesc_g_h        = "gh"
+let g:WhichKeyDesc_g_I        = "gI"
+let g:WhichKeyDesc_g_J        = "gJ"
+let g:WhichKeyDesc_g_k        = "gk"
+let g:WhichKeyDesc_g_j        = "gj"
+let g:WhichKeyDesc_g_m        = "gm"
+let g:WhichKeyDesc_g_N        = "gN"
+let g:WhichKeyDesc_g_n        = "gn"
+let g:WhichKeyDesc_g_o        = "go"
+let g:WhichKeyDesc_g_P        = "gP"
+let g:WhichKeyDesc_g_p        = "gp"
+let g:WhichKeyDesc_g_q        = "gq"
+let g:WhichKeyDesc_g_T        = "gT"
+let g:WhichKeyDesc_g_U        = "gU"
+let g:WhichKeyDesc_g_tilde    = "g~"
+
+let g:WhichKeyDesc_z_plus   = "z+"
+let g:WhichKeyDesc_z_caret  = "z^"
+let g:WhichKeyDesc_z_s      = "zs"
+let g:WhichKeyDesc_z_minus  = "z-"
+let g:WhichKeyDesc_z_D      = "zD"
+let g:WhichKeyDesc_z_dot    = "z."
+let g:WhichKeyDesc_z_cr     = "z<CR>"
+let g:WhichKeyDesc_z_M      = "zM"
+let g:WhichKeyDesc_z_d      = "zd"
+let g:WhichKeyDesc_z_m      = "zm"
+let g:WhichKeyDesc_z_left   = "z<Left>"
+let g:WhichKeyDesc_z_right  = "z<Right>"
+let g:WhichKeyDesc_z_e      = "ze"
+let g:WhichKeyDesc_z_R      = "zR"
+let g:WhichKeyDesc_z_f      = "zf"
+let g:WhichKeyDesc_z_r      = "zr"

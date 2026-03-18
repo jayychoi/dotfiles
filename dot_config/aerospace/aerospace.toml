@@ -216,4 +216,3 @@ run = ['move-node-to-workspace IntelliJ']
 [[on-window-detected]]
 if.app-id = 'com.kakao.KakaoTalkMac'
 run = ['move-node-to-workspace KakaoTalk']
-
